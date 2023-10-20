@@ -62,7 +62,7 @@ def save_to_csv(lines: list[dict], filename: str, mode: str = "w"):
         file_writer.writerows(lines)
 
 
-def filtering_news(news: list[dict], last_news_hash: str) -> list[dict]:
+def filter_news(news: list[dict], last_news_hash: str) -> list[dict]:
     """
     Фильтрует новости.
 
@@ -92,7 +92,7 @@ def main(filename: str, category: str = '', page: int = 1):
 
     while True:
         news = parser.start(category, page)
-        latest_news = filtering_news(news, last_news_hash)
+        latest_news = filter_news(news, last_news_hash)
 
         if latest_news:
             save_to_csv(latest_news, filename, mode='a')
